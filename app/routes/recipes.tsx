@@ -3,7 +3,7 @@ import { db } from "~/db";
 
 export function meta({}: Route.MetaArgs) {
   return [
-    { title: "New React Router App" },
+    { title: "My Recipes" },
     { name: "description", content: "Welcome to React Router!" },
   ];
 }
@@ -13,10 +13,10 @@ export async function loader({}: Route.LoaderArgs) {
   console.log("🚀 ~ loader ~ result:", result);
 }
 
-export default function Home() {
+export default function RecipesPage() {
   return (
     <>
-      <h1>Home Page</h1>
+      <h1>Recipes Page</h1>
     </>
   );
 }
