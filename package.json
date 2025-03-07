@@ -7,10 +7,10 @@
     "dev": "react-router dev",
     "start": "react-router-serve ./build/server/index.js",
     "typecheck": "react-router typegen && tsc",
-    "db:generate": "NODE_ENV=development drizzle-kit generate",
-    "db:migrate": "NODE_ENV=development drizzle-kit migrate",
-    "db:studio": "NODE_ENV=development drizzle-kit studio",
-    "db:push": "NODE_ENV=development drizzle-kit push"
+    "db:generate": "drizzle-kit generate",
+    "db:migrate": "drizzle-kit migrate",
+    "db:studio": "drizzle-kit studio",
+    "db:push": "drizzle-kit push"
   },
   "dependencies": {
     "@clerk/react-router": "^1.1.3",
