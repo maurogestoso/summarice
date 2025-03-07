@@ -25,12 +25,29 @@ export async function loader(loaderArgs: Route.LoaderArgs) {
   return { recipes };
 }
 
-export default function RecipesPage() {
+export default function RecipesPage({ loaderData }: Route.ComponentProps) {
+  const { recipes } = loaderData;
   return (
     <>
       <SignedIn>
-        <h1>Recipes Page</h1>
-        <Link to={"/recipes/new"}>Add +</Link>
+        <div className="flex justify-between items-center mb-4">
+          <h2 className="font-bold text-xl">Recipes</h2>
+          <Link className="bg-green-600 p-2 rounded-lg" to={"/recipes/new"}>
+            Add +
+          </Link>
+        </div>
+        <ul>
+          {recipes.map((recipe) => (
+            <li key={recipe.id} className="mb-1">
+              <Link
+                className="underline text-blue-500"
+                to={`/recipes/${recipe.id}`}
+              >
+                {recipe.data?.title}
+              </Link>
+            </li>
+          ))}
+        </ul>
       </SignedIn>
       <SignedOut>
         <RedirectToSignIn />
