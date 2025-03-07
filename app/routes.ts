@@ -12,5 +12,6 @@ export default [
   ...prefix("recipes", [
     index("routes/recipes.tsx"),
     route("new", "routes/recipes-new.tsx"),
+    route(":recipeId", "routes/recipes-detail.tsx"),
   ]),
 ] satisfies RouteConfig;

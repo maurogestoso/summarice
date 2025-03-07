@@ -1,4 +1,4 @@
-import { redirect, useFetcher, useNavigate } from "react-router";
+import { Link, redirect, useFetcher, useNavigate } from "react-router";
 import type { Route } from "./+types/recipes-new";
 import { z } from "zod";
 import { fetchRecipe } from "~/lib/dom";
@@ -49,6 +49,11 @@ export default function RecipesNew({}: Route.ComponentProps) {
 
   return (
     <>
+      <nav className="mb-2">
+        <Link to="/recipes" className="underline text-blue-500">
+          {"<- Back to recipes"}
+        </Link>
+      </nav>
       <fetcher.Form method="post">
         <textarea
           className="border border-gray-400 p-2 rounded-lg w-full"
