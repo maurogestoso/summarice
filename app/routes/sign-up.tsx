@@ -11,7 +11,6 @@ export function meta({}: Route.MetaArgs) {
 export default function SignUpPage() {
   return (
     <>
-      <h1>Sign Up Page</h1>
       <SignUp />
     </>
   );
