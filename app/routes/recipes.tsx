@@ -32,15 +32,17 @@ export default function RecipesPage({ loaderData }: Route.ComponentProps) {
       <SignedIn>
         <div className="flex justify-between items-center mb-4">
           <h2 className="font-bold text-xl">Recipes</h2>
-          <Link className="bg-green-600 p-2 rounded-lg" to={"/recipes/new"}>
-            Add +
-          </Link>
+          <button className="btn btn-primary">
+            <Link to={"/recipes/new"}>
+              Add +
+            </Link>
+          </button>
         </div>
         <ul>
           {recipes.map((recipe) => (
             <li key={recipe.id} className="mb-1">
               <Link
-                className="underline text-blue-500"
+                className="link link-secondary"
                 to={`/recipes/${recipe.id}`}
               >
                 {recipe.title}

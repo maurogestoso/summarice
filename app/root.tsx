@@ -65,7 +65,7 @@ export default function App({ loaderData }: Route.ComponentProps) {
       signInFallbackRedirectUrl="/"
     >
       <header className="flex items-center justify-center p-4">
-        <div className="text-3xl px-1 rounded-full border-2 border-orange-600">🍛</div>
+        <div className="text-3xl px-1 rounded-full border-2 border-secondary">🍛</div>
       </header>
       <main className="px-4">
         <Outlet />

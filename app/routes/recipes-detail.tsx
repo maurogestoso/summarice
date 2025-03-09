@@ -27,21 +27,24 @@ export default function RecipesDetail({ loaderData }: Route.ComponentProps) {
   
   return (
     <>
-      <nav className="mb-2">
-        <Link to="/recipes" className="underline text-blue-500">
+      <nav className="mb-4">
+        <Link to="/recipes" className="link link-secondary">
           {"<- Back to recipes"}
         </Link>
       </nav>
-      <h2 className="font-bold text-xl mb-2">{recipe.title}</h2>
+      <h2 className="font-bold text-2xl mb-1">{recipe.title}</h2>
       {recipe.url && (
-        <a 
+        <div className="text-sm mb-4">
+          🔗 
+          <a 
           href={recipe.url} 
           target="_blank" 
           rel="noopener noreferrer"
-          className="text-blue-500 underline block mb-4"
+          className="link link-secondary ml-1"
         >
-          View original recipe
+          Original recipe
         </a>
+        </div>
       )}
       <h3 className="font-bold text-lg">Ingredients</h3>
       <ul className="list-disc list-inside mb-2">

@@ -50,24 +50,26 @@ export default function RecipesNew({}: Route.ComponentProps) {
 
   return (
     <>
-      <nav className="mb-2">
-        <Link to="/recipes" className="underline text-blue-500">
+      <nav className="mb-4">
+        <Link to="/recipes" className="link link-secondary">
           {"<- Back to recipes"}
         </Link>
       </nav>
       <fetcher.Form method="post">
         <textarea
-          className="border border-gray-400 p-2 rounded-lg w-full"
+          className="textarea textarea-primary w-full mb-2"
           name="recipe_url"
           placeholder="Paste recipe URL..."
           rows={4}
+          autoFocus
         />
         <button
-          className="bg-green-600 rounded-lg p-2 w-full font-semibold disabled:bg-gray-500"
+          className="btn btn-primary btn-block"
           type="submit"
           disabled={isSubmitting}
         >
-          {isSubmitting ? "Adding..." : "Add"}
+          {isSubmitting ? <> <span className="loading loading-spinner"></span> Adding...
+            </> : "Add"}
         </button>
       </fetcher.Form>
     </>
