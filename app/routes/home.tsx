@@ -1,5 +1,8 @@
+import { Waitlist } from "@clerk/react-router";
 import type { Route } from "./+types/home";
 import { db } from "~/db";
+import { getAuth } from "@clerk/react-router/ssr.server";
+import { redirect } from "react-router";
 
 export function meta({}: Route.MetaArgs) {
   return [
@@ -8,15 +11,18 @@ export function meta({}: Route.MetaArgs) {
   ];
 }
 
-export async function loader({}: Route.LoaderArgs) {
-  const result = await db.run("SELECT 1");
-  console.log("🚀 ~ loader ~ result:", result);
+export async function loader(args: Route.LoaderArgs) {
+  const auth = await getAuth(args);
+  if (auth.userId) {
+    return redirect("/recipes");
+  }
 }
 
 export default function Home() {
+  
   return (
     <>
-      <h1>Home Page</h1>
+      <Waitlist />
     </>
   );
 }
