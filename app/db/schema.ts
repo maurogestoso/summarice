@@ -6,8 +6,9 @@ export let recipe = sqliteTable(
   {
     id: integer("id").primaryKey(),
     userId: text("userId").references(() => user.id),
-    data: text({ mode: "json" }).$type<{
-      title: string;
+    title: text("title").notNull(),
+    url: text("url").notNull(),
+    aiSummary: text({ mode: "json" }).$type<{
       ingredients: string[];
       instructions: string[];
     }>(),

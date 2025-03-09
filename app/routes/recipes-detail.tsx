@@ -23,6 +23,8 @@ export async function loader(args: Route.LoaderArgs) {
 }
 
 export default function RecipesDetail({ loaderData }: Route.ComponentProps) {
+  const { recipe } = loaderData;
+  
   return (
     <>
       <nav className="mb-2">
@@ -30,18 +32,26 @@ export default function RecipesDetail({ loaderData }: Route.ComponentProps) {
           {"<- Back to recipes"}
         </Link>
       </nav>
-      <h2 className="font-bold text-xl mb-2">
-        {loaderData.recipe.data?.title}
-      </h2>
+      <h2 className="font-bold text-xl mb-2">{recipe.title}</h2>
+      {recipe.url && (
+        <a 
+          href={recipe.url} 
+          target="_blank" 
+          rel="noopener noreferrer"
+          className="text-blue-500 underline block mb-4"
+        >
+          View original recipe
+        </a>
+      )}
       <h3 className="font-bold text-lg">Ingredients</h3>
       <ul className="list-disc list-inside mb-2">
-        {loaderData.recipe.data?.ingredients.map((ingredient, index) => (
+        {recipe.aiSummary?.ingredients.map((ingredient, index) => (
           <li key={index}>{ingredient}</li>
         ))}
       </ul>
       <h3 className="font-bold text-lg">Instructions</h3>
       <ol className="list-decimal list-inside">
-        {loaderData.recipe.data?.instructions.map((instruction, index) => (
+        {recipe.aiSummary?.instructions.map((instruction, index) => (
           <li key={index}>{instruction}</li>
         ))}
       </ol>

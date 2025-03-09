@@ -31,8 +31,9 @@ export async function action(loaderArgs: Route.ActionArgs) {
 
   await db.insert(recipe).values({
     userId: auth.userId!,
-    data: {
-      title: title!,
+    title: title ?? "Untitled Recipe",
+    url: recipeUrl,
+    aiSummary: {
       ingredients: recipeSummary.ingredients,
       instructions: recipeSummary.instructions,
     },

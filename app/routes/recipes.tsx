@@ -43,7 +43,7 @@ export default function RecipesPage({ loaderData }: Route.ComponentProps) {
                 className="underline text-blue-500"
                 to={`/recipes/${recipe.id}`}
               >
-                {recipe.data?.title}
+                {recipe.title}
               </Link>
             </li>
           ))}
