@@ -64,14 +64,8 @@ export default function App({ loaderData }: Route.ComponentProps) {
       signUpFallbackRedirectUrl="/"
       signInFallbackRedirectUrl="/"
     >
-      <header className="flex items-center justify-between py-8 px-4">
-        <h1 className="text-2xl font-semibold">summaRice 🍛</h1>
-        <SignedOut>
-          <SignInButton />
-        </SignedOut>
-        <SignedIn>
-          <UserButton />
-        </SignedIn>
+      <header className="flex items-center justify-center p-4">
+        <div className="text-3xl px-1 rounded-full border-2 border-orange-600">🍛</div>
       </header>
       <main className="px-4">
         <Outlet />
