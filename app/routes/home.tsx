@@ -1,6 +1,5 @@
 import { Waitlist } from "@clerk/react-router";
 import type { Route } from "./+types/home";
-import { db } from "~/db";
 import { getAuth } from "@clerk/react-router/ssr.server";
 import { redirect } from "react-router";
 
