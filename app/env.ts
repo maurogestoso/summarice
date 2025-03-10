@@ -1,16 +1,4 @@
 import { z } from "zod";
-import { config } from "dotenv";
-import path from "path";
-
-const nodeEnv = process.env.NODE_ENV || "development";
-const envPath = path.resolve(process.cwd(), `.env.${nodeEnv}`);
-const fallbackPath = path.resolve(process.cwd(), ".env");
-
-const result = config({ path: envPath });
-if (result.error) {
-  console.log(`No ${envPath} found, falling back to ${fallbackPath}`);
-  config({ path: fallbackPath });
-}
 
 const envSchema = z.object({
   // Environment
@@ -39,7 +27,7 @@ const envSchema = z.object({
 });
 
 const env = envSchema.parse({
-  ...result.parsed,
+  ...process.env,
   NODE_ENV: process.env.NODE_ENV || "development"
 });
 
