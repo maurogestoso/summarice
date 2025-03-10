@@ -3,15 +3,15 @@ import type { Route } from "./+types/webhooks";
 import { Webhook } from "svix";
 import { db } from "~/db";
 import { user } from "~/db/schema";
+import env from "~/env";
 
 export async function action({ request }: Route.ActionArgs) {
-  const SIGNING_SECRET = process.env.CLERK_SIGNING_SECRET;
-  if (!SIGNING_SECRET) {
+  if (!env.CLERK_SIGNING_SECRET) {
     throw new Error(
       "Error: Please add SIGNING_SECRET from Clerk Dashboard to .env or .env"
     );
   }
-  const wh = new Webhook(SIGNING_SECRET);
+  const wh = new Webhook(env.CLERK_SIGNING_SECRET);
   const svix_id = request.headers.get("svix-id");
   const svix_timestamp = request.headers.get("svix-timestamp");
   const svix_signature = request.headers.get("svix-signature");
