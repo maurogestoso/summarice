@@ -12,6 +12,7 @@ export default [
   ...prefix("recipes", [
     index("routes/recipes.tsx"),
     route("new", "routes/recipes-new.tsx"),
+    route(":id/edit", "routes/recipes-edit.tsx"),
     route(":recipeId", "routes/recipes-detail.tsx"),
   ]),
   ...prefix("api", [route("webhooks", "routes/api/webhooks.ts")]),

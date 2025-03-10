@@ -62,6 +62,7 @@ export default function RecipesNew({}: Route.ComponentProps) {
           placeholder="Paste recipe URL..."
           rows={4}
           autoFocus
+          required
         />
         <button
           className="btn btn-primary btn-block"

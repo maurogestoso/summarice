@@ -51,7 +51,7 @@ export default function RecipesDetail({ loaderData }: Route.ComponentProps) {
           {"<- Back to recipes"}
         </Link>
         <button 
-          className="btn btn-primary w-20" 
+          className="btn btn-primary" 
           popoverTarget="popover-1" 
           style={{ anchorName: "--anchor-1" } as React.CSSProperties}
         >
@@ -59,18 +59,22 @@ export default function RecipesDetail({ loaderData }: Route.ComponentProps) {
         </button>
 
         <ul 
-          className="dropdown dropdown-end menu rounded-box bg-base-100 shadow-sm w-24"
+          className="dropdown dropdown-end menu rounded-box bg-base-100 shadow-sm"
           popover="auto" 
           id="popover-1" 
           style={{ positionAnchor: "--anchor-1" } as React.CSSProperties }
         >
           <li>
-            <Form method="delete" action={`/recipes/${recipe.id}`}>
+            <Link to={`/recipes/${recipe.id}/edit`} className="btn btn-sm btn-soft btn-accent">Edit</Link>
+          </li>
+          <li>
+            <Form method="delete" action={`/recipes/${recipe.id}`} className="p-0">
               <button className="btn btn-sm btn-soft btn-error" type="submit">Delete</button>
             </Form>
           </li>
         </ul>
       </nav>
+      
       <h2 className="font-bold text-2xl mb-1">{recipe.title}</h2>
       <div className="mb-4">
         <span className="text-sm">
