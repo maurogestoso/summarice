@@ -30,8 +30,15 @@ export async function action(args: Route.ActionArgs) {
     throw new Error("Not authenticated");
   }
 
-  await db.delete(recipe).where(and(eq(recipe.id, parseInt(recipeId)), eq(recipe.userId, userId)));
-  return redirect("/recipes");
+  if (args.request.method === "DELETE") {
+    await db
+      .delete(recipe)
+      .where(and(
+        eq(recipe.id, parseInt(recipeId)), 
+        eq(recipe.userId, userId))
+      );
+    return redirect("/recipes");
+  }
 }
 
 export default function RecipesDetail({ loaderData }: Route.ComponentProps) {
