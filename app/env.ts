@@ -39,7 +39,7 @@ const envSchema = z.object({
 });
 
 const env = envSchema.parse({
-  ...process.env,
+  ...result.parsed,
   NODE_ENV: process.env.NODE_ENV || "development"
 });
 
