@@ -40,10 +40,15 @@ export async function action({ request }: Route.ActionArgs) {
   }
 
   if (evt.type === "user.created") {
-    console.log(
-      `🤖 User created: ${evt.data.email_addresses[0].email_address}`
-    );
-    await db.insert(user).values({ id: evt.data.id });
+    const email = evt.data.email_addresses[0]?.email_address;
+    if (!email) {
+      throw new Error("User must have an email address");
+    }
+    console.log(`🤖 User created: ${email}`);
+    await db.insert(user).values({ 
+      id: evt.data.id,
+      email,
+    });
   }
 
   return new Response("Webhook received", { status: 200 });

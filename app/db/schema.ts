@@ -19,4 +19,6 @@ export let recipe = sqliteTable(
 
 export let user = sqliteTable("user", {
   id: text("id").primaryKey(),
+  email: text("email").notNull(),
+  createdAt: text("created_at").notNull().default(sql`CURRENT_TIMESTAMP`),
 });
